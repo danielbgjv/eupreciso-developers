@@ -73,7 +73,7 @@ Contribuições são bem-vindas! Se você encontrar algum erro na documentação
 
 ## Licença
 
-A documentação está disponível sob a licença [MIT License](LICENSE).
+A documentação está disponível sob a licença [Apache License, Version 2.0](LICENSE).
 
 ## Contato
 
