@@ -29,6 +29,15 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="images/favicon.ico" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="<%= current_page.data.title || 'Eu Preciso API Documentation' %>" />
+    <meta property="og:description" content="Documentação completa da API Eu Preciso, com exemplos, endpoints e instruções detalhadas para importação de anúncios." />
+    <meta property="og:image" content="https://developers.eupreciso.com.br/images/logo-c36b37df.png" />
+    <meta property="og:url" content="<%= current_page.url %>" />
+    <meta property="og:type" content="website" />
+
     <% if current_page.data.key?('meta') %>
       <% current_page.data.meta.each do |meta| %>
         <meta
@@ -38,7 +47,7 @@ under the License.
         >
       <% end %>
     <% end %>
-    <title><%= current_page.data.title || "API Documentation" %></title>
+    <title><%= current_page.data.title || "Eu Preciso API Documentation" %></title>
 
     <style media="screen">
       <%= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
@@ -86,7 +95,7 @@ under the License.
       <% end %>
       <% if current_page.data.search %>
         <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
+          <input type="text" class="search" id="input-search" placeholder="Pesquisar">
         </div>
         <ul class="search-results"></ul>
       <% end %>

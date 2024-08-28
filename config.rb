@@ -1,6 +1,8 @@
 # Unique header generation
 require './lib/unique_head.rb'
 
+ENV['EXECJS_RUNTIME'] = 'Node'
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
