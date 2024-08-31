@@ -219,7 +219,7 @@ Chaves de acesso são credenciais usadas para acessar recursos protegidos de um 
 > Segue um exemplo de requisição de chave de acesso.
 
 ```http
-POST /api/integradores/oauth/token HTTP/1.1
+POST /integradores/oauth/token HTTP/1.1
 Host: apps.eupreciso.com.br
 Content-Type: application/x-www-form-urlencoded
 
@@ -294,7 +294,7 @@ O cliente acessa os recursos protegidos do usuário apresentando a chave de aces
 > Segue abaixo um exemplo de como utilizar a API eupreciso.com.br para obter as informações básicas de um usuário:
 
 ```http
-POST /api/integradores/basic_user_info HTTPS/1.1
+POST /integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 User-Agent: Mozilla/5.0
 Content-Type: application/json;charset=UTF-8
@@ -320,7 +320,7 @@ Retorna uma lista com as informações básicas do usuário.
 > `basic_user_info` - Acesso
 
 ```http
-POST /api/integradores/basic_user_info HTTPS/1.1
+POST /integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 ```
 
@@ -333,7 +333,7 @@ Qualquer chave de acesso com a permissão b​asic_user_info.
 > `basic_user_info` - Chamada
 
 ```http
-POST /api/integradores/basic_user_info HTTPS/1.1
+POST /integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 Content-Type: application/json;charset=UTF-8
 Authorization: Bearer 8/5VLTrMv2gLK8dqokN7xT
@@ -402,7 +402,7 @@ async with httpx.AsyncClient() as client:
       headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
       response = await client.post(
-          f"https://{auth_host}/api/integradores/oauth/token", data=payload,
+          f"https://{auth_host}/integradores/oauth/token", data=payload,
           headers=headers
       )
       data = response.json()
@@ -485,7 +485,7 @@ public class OauthController {
         );
 
         Request request = new Request.Builder()
-                .url("https://" + AUTH_HOST + "/api/integradores/oauth/token")
+                .url("https://" + AUTH_HOST + "/integradores/oauth/token")
                 .post(body)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .build();
@@ -548,7 +548,7 @@ if (isset($_GET['code'])) {
     );
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://{$auth_host}/api/integradores/oauth/token");
+    curl_setopt($ch, CURLOPT_URL, "https://{$auth_host}/integradores/oauth/token");
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -565,7 +565,7 @@ if (isset($_GET['code'])) {
     $request_data = array('access_token' => $data->access_token);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://{$apps_host}/api/integradores/basic_user_info");
+    curl_setopt($ch, CURLOPT_URL, "https://{$apps_host}/integradores/basic_user_info");
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request_data));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
