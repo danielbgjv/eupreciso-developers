@@ -219,7 +219,7 @@ Chaves de acesso são credenciais usadas para acessar recursos protegidos de um 
 > Segue um exemplo de requisição de chave de acesso.
 
 ```http
-POST /integradores/oauth/token HTTP/1.1
+POST /v1.0/integradores/oauth/token HTTP/1.1
 Host: apps.eupreciso.com.br
 Content-Type: application/x-www-form-urlencoded
 
@@ -389,7 +389,7 @@ async def oauth(request: Request, code: str):
      client_secret = "c3vcFX6zMmmWeWRCCHWdc6obBFQ5jOlQ"
      grant_type = "authorization_code"
      redirect_uri = "http://127.0.0.1:8000/oauth"
-     auth_host = "www.eupreciso.com.br"
+     apps_host = "apps.eupreciso.com.br"
 
 async with httpx.AsyncClient() as client:
       payload = {
@@ -402,7 +402,7 @@ async with httpx.AsyncClient() as client:
       headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
       response = await client.post(
-          f"https://{auth_host}/integradores/oauth/token", data=payload,
+          f"https://{apps_host}/v1.0/integradores/oauth/token", data=payload,
           headers=headers
       )
       data = response.json()
@@ -455,6 +455,7 @@ public class OauthController {
     private static final String CLIENT_ID = "6532fc73be26a0762f678a31";
     private static final String CLIENT_SECRET = "c3vcFX6zMmmWeWRCCHWdc6obBFQ5jOlQ";
     private static final String AUTH_HOST = "www.eupreciso.com.br";
+    private static final String APPS_HOST = "apps.eupreciso.com.br";
     private static final String REDIRECT_URI = "http://127.0.0.1:8080/oauth";
     private static final String GRANT_TYPE = "authorization_code";
     private static final String RESPONSE_TYPE = "code";
@@ -485,7 +486,7 @@ public class OauthController {
         );
 
         Request request = new Request.Builder()
-                .url("https://" + AUTH_HOST + "/integradores/oauth/token")
+                .url("https://" + APPS_HOST + "/v1.0/integradores/oauth/token")
                 .post(body)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .build();
@@ -532,7 +533,7 @@ $redirect_uri ='http://127.0.0.1/oauth.php';
 $state = 'bla';
 $grant_type = 'authorization_code';
 $auth_host = 'www.eupreciso.com.br';
-$apps_host = 'www.eupreciso.com.br';
+$apps_host = 'apps.eupreciso.com.br';
 
 $url = "https://{$auth_host}/auth/integradores/oauth?client_id={$client_id}&response_type={$response_type}&scope={$scope}&redirect_uri={$redirect_uri}&state={$state}";
 
@@ -548,7 +549,7 @@ if (isset($_GET['code'])) {
     );
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://{$auth_host}/integradores/oauth/token");
+    curl_setopt($ch, CURLOPT_URL, "https://{$apps_host}/v1.0/integradores/oauth/token");
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -565,7 +566,7 @@ if (isset($_GET['code'])) {
     $request_data = array('access_token' => $data->access_token);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://{$apps_host}/integradores/basic_user_info");
+    curl_setopt($ch, CURLOPT_URL, "https://{$apps_host}/v1.0/integradores/basic_user_info");
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request_data));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
