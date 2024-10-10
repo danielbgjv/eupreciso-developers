@@ -228,7 +228,7 @@ code=4/P7q7W91aoMsCeLvIaQm6bTrgtp7&client_id=1055d3e698d289f2af8663725127bd4b&cl
 
 #### Requisição da Chave de Acesso
 
-A URL usada para solicitar a chave de acesso será <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/oauth/token`</span>
+A URL usada para solicitar a chave de acesso será <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/oauth/token`</span>
 
 Após receber o código de autorização, o cliente poderá trocá-lo por uma chave de acesso através de uma nova requisição. Esta requisição deverá ser um POST HTTPS e conter os seguintes parâmetros: `code`, `client_id`, `client_secret`, `redirect_uri` e `grant_type`.
 
@@ -294,7 +294,7 @@ O cliente acessa os recursos protegidos do usuário apresentando a chave de aces
 > Segue abaixo um exemplo de como utilizar a API eupreciso.com.br para obter as informações básicas de um usuário:
 
 ```http
-POST /integradores/basic_user_info HTTPS/1.1
+POST /v1.0/integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 User-Agent: Mozilla/5.0
 Content-Type: application/json;charset=UTF-8
@@ -304,7 +304,7 @@ Authorization: Bearer 8/5VLTrMv2gLK8dqokN7xT
 > Ou utilizando uma aplicação por linha de comando como, por exemplo, o CURL:
 
 ```shell
-curl -X POST https://apps.eupreciso.com.br/integradores/basic_user_info \
+curl -X POST https://apps.eupreciso.com.br/v1.0/integradores/basic_user_info \
 -H 'Authorization: Bearer 8/5VLTrMv2gLK8dqokN7xT' \
 -H 'User-Agent: Mozilla/5.0'
 ```
@@ -320,7 +320,7 @@ Retorna uma lista com as informações básicas do usuário.
 > `basic_user_info` - Acesso
 
 ```http
-POST /integradores/basic_user_info HTTPS/1.1
+POST /v1.0/integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 ```
 
@@ -333,7 +333,7 @@ Qualquer chave de acesso com a permissão b​asic_user_info.
 > `basic_user_info` - Chamada
 
 ```http
-POST /integradores/basic_user_info HTTPS/1.1
+POST /v1.0/integradores/basic_user_info HTTPS/1.1
 Host: apps.eupreciso.com.br
 Content-Type: application/json;charset=UTF-8
 Authorization: Bearer 8/5VLTrMv2gLK8dqokN7xT
@@ -596,7 +596,7 @@ Na autenticação, o sistema solicitante receberá o `client_id` e o `client_se
 
 O processo de integração de anúncios via API consiste no envio de um arquivo no formato JSON descrevendo um ou mais anúncios para inserção, edição ou deleção.
 
-A URL usada para envio da requisição é: <span style="font-weight: bold"> `https://apps.eupreciso.com.br/integradores/autoupload/import`</span>
+A URL usada para envio da requisição é: <span style="font-weight: bold"> `https://apps.eupreciso.com.br/v1.0/integradores/autoupload/import`</span>
 
 O nosso servidor deve receber a chamada com método do tipo `POST` e o header enviado deverá ser: `Content-type: application/json`, Authorization: seu `access_token`. O formato do encode do JSON deverá ser UTF-8 e o tamanho do payload não pode ultrapassar 1 MB.
 
@@ -900,11 +900,11 @@ Além disso, há parâmetros específicos para esta subcategoria, que devem cons
 
 Os endpoints disponíveis para consultar detalhes de marcas e modelos para Automóveis no Eu Preciso são os seguintes:
 
-| Subcategoria | Descrição                                  | Endpoint                                                                                            |
-| ------------ | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Carros       | Marcas de carros disponíveis               | https://apps.eupreciso.com.br/integradores/autoupload/info/car_info                                 |
-| Carros       | Modelos de carros de uma determinada marca | https://apps.eupreciso.com.br/integradores/autoupload/info/car_info/{id_marca}                      |
-| Carros       | Anos de carros de um determinado modelo    | https://apps.eupreciso.com.br/integradores/autoupload/info/car_info/{id_marca}/years/{id_do_modelo} |
+| Subcategoria | Descrição                                  | Endpoint                                                                                                 |
+| ------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Carros       | Marcas de carros disponíveis               | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/car_info                                 |
+| Carros       | Modelos de carros de uma determinada marca | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/car_info/{id_marca}                      |
+| Carros       | Anos de carros de um determinado modelo    | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/car_info/{id_marca}/years/{id_do_modelo} |
 
 Nosso servidor deve receber a requisição com método do tipo POST, sendo que o formato do arquivo a ser enviado para nosso servidor deverá ser do tipo JSON.
 
@@ -1010,11 +1010,11 @@ Além disso, há parâmetros específicos para esta subcategoria, que devem cons
 
 Os endpoints disponíveis para consultar detalhes de marcas e modelos para Motos no Eu Preciso são os seguintes:
 
-| Subcategoria | Descrição                                 | Endpoint                                                                                             |
-| ------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Motos        | Marcas de motos disponíveis               | https://apps.eupreciso.com.br/integradores/autoupload/info/moto_info                                 |
-| Motos        | Modelos de motos de uma determinada marca | https://apps.eupreciso.com.br/integradores/autoupload/info/moto_info/{id_marca}                      |
-| Motos        | Anos de motos de um determinado modelo    | https://apps.eupreciso.com.br/integradores/autoupload/info/moto_info/{id_marca}/years/{id_do_modelo} |
+| Subcategoria | Descrição                                 | Endpoint                                                                                                  |
+| ------------ | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Motos        | Marcas de motos disponíveis               | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/moto_info                                 |
+| Motos        | Modelos de motos de uma determinada marca | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/moto_info/{id_marca}                      |
+| Motos        | Anos de motos de um determinado modelo    | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/moto_info/{id_marca}/years/{id_do_modelo} |
 
 Nosso servidor deve receber a requisição com método do tipo POST, sendo que o formato do arquivo a ser enviado para nosso servidor deverá ser do tipo JSON.
 
@@ -1226,25 +1226,25 @@ Cada subcategoria de Imóveis tem seu conjunto de parâmetros e valores específ
 
 Os endpoints disponíveis para consultar nomes de Condomínios no Eu Preciso são os seguintes:
 
-| Descrição                                | Endpoint                                                                                    | Parâmetros     |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------- | -------------- |
-| Nomes de condomínio disponíveis por cep  | https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/cep/${CEP}            | -              |
-| Nomes de condomínio disponíveis por CNPJ | https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/cnpj/${CNPJ}          | -              |
-| Nomes de condomínio disponíveis por Nome | https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/nome/${PARTE DO NOME} | cidade, bairro |
+| Descrição                                | Endpoint                                                                                         | Parâmetros     |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------- |
+| Nomes de condomínio disponíveis por cep  | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/cep/${CEP}            | -              |
+| Nomes de condomínio disponíveis por CNPJ | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/cnpj/${CNPJ}          | -              |
+| Nomes de condomínio disponíveis por Nome | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/nome/${PARTE DO NOME} | cidade, bairro |
 
 Nosso servidor deve receber a requisição com método do tipo POST, sendo que o formato do arquivo a ser enviado para nosso servidor deverá ser do tipo JSON.
 
 <p style="font-weight:bold">Exemplo de consulta por CEP:</p>
 
-`https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/cep/89221008`
+`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/cep/89221008`
 
 ou
 
-`https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/cep/89221-008`
+`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/cep/89221-008`
 
 <p style="font-weight:bold">Exemplo de consulta por nome:</p>
 
-`https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/ nome/Ouro?cidade=São+Paulo&bairro=Jardim+Paulista`
+`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/ nome/Ouro?cidade=São+Paulo&bairro=Jardim+Paulista`
 
 - O `access_token` deve ser fornecido no headers da requisição.
 - O nome a ser preenchido no campo params.condominioName é o nome, primeiro campo da resposta.
@@ -1268,15 +1268,15 @@ ATENÇÃO: Caso não localizado o condomínio, basta ignorar o campo params.cond
 
 O endpoint disponível para inserir um condomínio não localizado na base de dados do Eu Preciso é:
 
-| Descrição                               | Endpoint                                                                     | Parâmetros |
-| --------------------------------------- | ---------------------------------------------------------------------------- | ---------- |
-| Nomes de condomínio disponíveis por cep | https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/insert | -          |
+| Descrição                               | Endpoint                                                                          | Parâmetros |
+| --------------------------------------- | --------------------------------------------------------------------------------- | ---------- |
+| Nomes de condomínio disponíveis por cep | https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/insert | -          |
 
 Nosso servidor deve receber a requisição com método do tipo `POST`, sendo que o formato do arquivo a ser enviado para nosso servidor deverá ser do tipo `JSON`. A requisição deve receber como parâmetro somente o cnpj do condomínio.
 
 <p style="font-weight:bold">Exemplo de inserção de condomínio:</p>
 
-`https://apps.eupreciso.com.br/integradores/autoupload/info/condo_info/insert?cnpj=46757764000127`
+`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/info/condo_info/insert?cnpj=46757764000127`
 
 A inserção de condomínios pode resultar em erros de servidor (status 400, reason: “SERVER_ERROR_CEP”), em razão do CEP inválido cadastrado para o condomínio nas bases oficiais. Em caso de repetidos erros de servidor para a inserção de um mesmo condomínio, contate nosso suporte para inserção interna.
 
@@ -1292,7 +1292,7 @@ Durante a importação, os anúncios publicados por integradores são automatica
 
 ## Requisição de Status
 
-A URL usada para fazer a requisição do arquivo JSON: <p style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/import/{token}`</p>. O token a ser inserido no final da URL é o retorno mencionado na importação.
+A URL usada para fazer a requisição do arquivo JSON: <p style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/import/{token}`</p>. O token a ser inserido no final da URL é o retorno mencionado na importação.
 
 A requisição feita para esta URL deve conter o `access_token` de cada anunciante nos headers, usando o método `POST`.
 
@@ -1426,7 +1426,7 @@ Esta consulta retorna todos os anúncios que já foram processados e estão ativ
 
 Nosso servidor deve receber a requisição com método do tipo POST e com um JSON no corpo da requisição.
 
-Exemplo de chamada para a URL <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/published`</span>, sempre com o `access_token` incluso no headers da requisição.
+Exemplo de chamada para a URL <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/published`</span>, sempre com o `access_token` incluso no headers da requisição.
 
 O retorno da chamada trará o identificador usado pelo integrador/anunciante na inserção do anúncio e outro identificador do anúncio no Eu Preciso. Caso o anunciante não tenha anúncios ativos, será retornado um array vazio.
 
@@ -1445,7 +1445,7 @@ Se o anunciante possui os Recursos PRO ativos e o destaque for aplicado, a requi
 
 ## Aplicação de Destaque em Anúncios
 
-A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/bump/ad/{ad_id}`</span>, método `POST`.
+A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/bump/ad/{ad_id}`</span>, método `POST`.
 
 ### Retorno de sucesso esperado
 
@@ -1482,7 +1482,7 @@ Caso ocorra algum erro ou o anunciante não possua os Recursos PRO ativo, a cons
 > Request
 
 ```shell
-curl --location --request POST 'https://apps.eupreciso.com.br/integradores/autoupload/bump/ad/456789123' \
+curl --location --request POST 'https://apps.eupreciso.com.br/v1.0/integradores/autoupload/bump/ad/456789123' \
 --header 'Authorization: Bearer 5/4PXLrAv2gLZ6dqokH6xB' \
 --header 'Content-Type: application/json' \
 ```
@@ -1507,7 +1507,7 @@ curl --location --request POST 'https://apps.eupreciso.com.br/integradores/autou
 
 ## Consulta de anúncios destacados
 
-A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/bump/ads`</span>, método `POST`. Essa requisição deve conter em seu body `ad_ids` em formato JSON uma lista de até 10 identificadores de anúncios.
+A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/bump/ads`</span>, método `POST`. Essa requisição deve conter em seu body `ad_ids` em formato JSON uma lista de até 10 identificadores de anúncios.
 
 A requisição feita para esta URL deve conter o access_token de cada anunciante nos headers, usando o método `POST`.
 
@@ -1563,7 +1563,7 @@ Caso ocorra algum erro ou o anunciante não possua os Recursos PRO ativo, a cons
 > Request
 
 ```shell
-curl --location --request POST 'https://apps.eupreciso.com.br/integradores/autoupload/bump/ads' \
+curl --location --request POST 'https://apps.eupreciso.com.br/v1.0/integradores/autoupload/bump/ads' \
 --header 'Authorization: Bearer 5/4PXLrAv2gLZ6dqokH6xB' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -1621,7 +1621,7 @@ A API abaixo disponibiliza informações para acompanhamento da quantidade de in
 
 ## Requisição de consulta de saldo e limite
 
-A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/balance`</span>, método `POST`. Essa requisição deve conter o `access_token` de cada anunciante no header como: Authorization: Bearer `<access_token>`.
+A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/balance`</span>, método `POST`. Essa requisição deve conter o `access_token` de cada anunciante no header como: Authorization: Bearer `<access_token>`.
 
 ### Retorno de sucesso esperado
 
@@ -1667,7 +1667,7 @@ Caso ocorra algum erro, a consulta retorna um `status code > 200` e um JSON com 
 
 > Exemplo de Retorno
 
-> Requisição: https://apps.eupreciso.com.br/integradores/autoupload/balance
+> Requisição: https://apps.eupreciso.com.br/v1.0/integradores/autoupload/balance
 
 ```json
 {
@@ -1690,7 +1690,7 @@ Caso ocorra algum erro, a consulta retorna um `status code > 200` e um JSON com 
 
 ## Requisição de consulta de renovações
 
-A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/integradores/autoupload/renews`</span>, método `POST`. Essa requisição deve conter o `access_token` de cada anunciante no header como: Authorization: `Bearer <access_token>`.
+A URL usada para fazer a requisição do arquivo JSON é <span style="font-weight:bold">`https://apps.eupreciso.com.br/v1.0/integradores/autoupload/renews`</span>, método `POST`. Essa requisição deve conter o `access_token` de cada anunciante no header como: Authorization: `Bearer <access_token>`.
 
 ### Retorno de sucesso esperado
 
@@ -1726,7 +1726,7 @@ Caso ocorra algum erro, a consulta retorna um `status code > 200` e um JSON com 
 
 > Exemplo de Retorno
 
-> Requisição: https://apps.eupreciso.com.br/integradores/autoupload/renews
+> Requisição: https://apps.eupreciso.com.br/v1.0/integradores/autoupload/renews
 
 ```json
 [
